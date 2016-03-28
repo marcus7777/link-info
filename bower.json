@@ -1,0 +1,14 @@
+{
+  "name": "link-info",
+  "version": "1.0.0",
+  "description": "Get information about a link by passing the HTML Returned",
+  "main": "link-info.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "polymer": "*",
+    "iron-ajax": "PolymerElements/iron-ajax#4a9f0c9b58"
+  }
+}
