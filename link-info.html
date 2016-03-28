@@ -1,0 +1,29 @@
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<!--
+`<link-info></link-info>` Get information about a link by passing the HTML Returned
+@demo demo.html
+-->
+
+<dom-module id="link-info">
+  <template>
+    <iron-ajax auto url="{{url}}" handle-as="text" last-response="{{html}}"></iron-ajax>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: "link-info",
+  properties: {
+    doc: {
+      computed: "getDoc(html)"
+    },
+    docTitle: {
+      computed: "doc.title"
+    }
+  },
+  getDoc: function(html) {
+    parser = new DOMParser()
+    return parser.parseFromString(html, "text/html")
+  },
+})
+</script>
