@@ -21,7 +21,7 @@ Polymer({
       computed: "get(doc.title)", notify: true
     },
     docImages: {
-      computed: "get(doc.images)", notify: true, type: Array
+      computed: "getImages(doc.images)", notify: true, type: Array
     },
     server: {
       value: "/bower_components/link-info/server/index.php"
@@ -39,6 +39,9 @@ Polymer({
   },
   get: function(got) {
     return got
+  },
+  getImages: function(got) {
+    return [].slice.call(got)
   }
 })
 </script>
