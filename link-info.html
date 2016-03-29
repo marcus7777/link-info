@@ -7,7 +7,7 @@
 
 <dom-module id="link-info">
   <template>
-    <iron-ajax auto url="{{url}}" handle-as="text" last-response="{{html}}"></iron-ajax>
+    <iron-ajax auto url="{{_url}}" handle-as="text" last-response="{{html}}"></iron-ajax>
   </template>
 </dom-module>
 <script>
@@ -22,11 +22,17 @@ Polymer({
     },
     server: {
       value: "/bower_components/link-info/server/index.php"
+    },
+    _url {
+      computed: "getUrl(server, url)"
     }
   },
   getDoc: function(html) {
     parser = new DOMParser()
     return parser.parseFromString(html, "text/html")
   },
+  getUrl: function(server, url) {
+    return server + '?u=' + encodeURIComponent(url)
+  }
 })
 </script>
