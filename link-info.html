@@ -42,6 +42,15 @@ Polymer({
   },
   getImages: function(got) {
     return [].slice.call(got)
+  },
+  getFavicon: function(doc) {
+    var html = doc.children[0]
+    var head = html.childNodes.item('head')
+    var meta = [].slice.call(head.childNodes)
+    for (var i = 0; i < meta.length; i++) {
+      console.log(meta[i])
+    } 
+    return "favicon.ico"
   }
 })
 </script>
