@@ -15,10 +15,10 @@ Polymer({
   is: "link-info",
   properties: {
     doc: {
-      computed: "getDoc(html)"
+      computed: "getDoc(html)", notify: true
     },
     docTitle: {
-      computed: "doc.title"
+      computed: "doc.title", notify: true
     },
     server: {
       value: "/bower_components/link-info/server/index.php"
