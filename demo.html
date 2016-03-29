@@ -8,12 +8,11 @@
   <body>
     <h3>link-info Demo</h3>
     <template is="dom-bind">
-      <link-info url="https://client.independencewealth.eu/" doc-title="{{title}}" doc="{{doc}}"></link-info>
+    <link-info server="http://dev.open-elements.org/bower_components/link-info/server/index.php" url="https://www.polymer-project.org/1.0/" doc-title="{{title}}" doc-images="{{images}}"></link-info>
       "{{title}}"
-      "{{doc}}"
+      <template is="dom-repeat" items="{{images}}">
+        <iframe srcdoc="<base href=https://www.polymer-project.org/1.0/>{{item.outerHTML}}" ></iframe>
+      </template>
     </template>
   </body>
 </html>
-
-
-
