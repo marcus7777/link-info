@@ -20,6 +20,9 @@ Polymer({
     docTitle: {
       computed: "get(doc.title)", notify: true
     },
+    docImages: {
+      computed: "get(doc.images)", notify: true, type: Array
+    },
     server: {
       value: "/bower_components/link-info/server/index.php"
     },
