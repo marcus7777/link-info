@@ -41,7 +41,7 @@ header('Content-Type: text/plain');
 /* Continue */
 $html = _get_data(urldecode($client_url));
 
-echo preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
+echo $html; // preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
 
 function _get_data ($url) {
   return file_get_contents($url);
