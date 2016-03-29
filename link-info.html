@@ -18,7 +18,7 @@ Polymer({
       computed: "getDoc(html)", notify: true
     },
     docTitle: {
-      computed: "doc.title", notify: true
+      computed: "get(doc.title)", notify: true
     },
     server: {
       value: "/bower_components/link-info/server/index.php"
@@ -33,6 +33,9 @@ Polymer({
   },
   getUrl: function(server, url) {
     return server + '?u=' + encodeURIComponent(url)
+  },
+  get: function(got) {
+    return got
   }
 })
 </script>
