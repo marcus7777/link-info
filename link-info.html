@@ -68,7 +68,7 @@ Polymer({
     var head = html.childNodes.item('head')
     var meta = [].slice.call(head.childNodes)
     for (var i = 0; i < meta.length; i++) {
-      if (meta[i].attributes && meta[i].attributes.nodeName === "LINK") {
+      if (meta[i].attributes && meta[i].nodeName === "LINK") {
         for (var attr = 0; attr < meta[i].attributes.length; attr++) {
           console.log(meta[i].attributes[attr].textContent)
           console.log(meta[i].attributes[attr].name)
