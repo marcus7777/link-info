@@ -18,19 +18,22 @@ Polymer({
       computed: "getDoc(html)", notify: true
     },
     docFavicon: {
-      computed: "getFavicon(doc)", notify: true
+      computed: "getFavicon(base, doc)", notify: true
     },
     docTitle: {
       computed: "get(doc.title)", notify: true
     },
     docImages: {
-      computed: "getImages(doc.images)", notify: true, type: Array
+      computed: "getImages(base, doc.images)", notify: true, type: Array
     },
     server: {
       value: "/bower_components/link-info/server/index.php"
     },
     _url: {
       computed: "getUrl(server, url)"
+    },
+    base: {
+      computed: "getBase(url)"
     }
   },
   getDoc: function(html) {
@@ -43,18 +46,33 @@ Polymer({
   get: function(got) {
     return got
   },
-  getImages: function(got) {
-    return [].slice.call(got)
+  getBase: function(url) {
+    var re = /(https?:\/\/[^\/]*)/gi
+    var res = url.match(re)
+    if (Array.isArray(res) && res.length > 0) {
+      return res[0]
+    }
   },
-  getFavicon: function(doc) {
+  getImages: function(base, got) {
+    var images = [].slice.call(got)
+    var output = []
+    for (var i = 0; i < images.length; i++) {
+      var re = /src="\//gi; 
+      var subst = 'src="'+base+'/'; 
+      output.push(images[i].outerHTML.replace(re, subst))
+    }
+    return output
+  },
+  getFavicon: function(base, doc) {
     var html = doc.children[0]
     var head = html.childNodes.item('head')
     var meta = [].slice.call(head.childNodes)
     for (var i = 0; i < meta.length; i++) {
-      if (meta[i].attributes) {
+      if (meta[i].attributes && meta[i].attributes.nodeName === "LINK") {
         for (var attr = 0; attr < meta[i].attributes.length; attr++) {
           console.log(meta[i].attributes[attr].textContent)
-        }  
+          console.log(meta[i].attributes[attr].name)
+        }
       }
     } 
     return "favicon.ico"

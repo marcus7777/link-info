@@ -13,8 +13,7 @@
       <link-info server="http://dev.open-elements.org/bower_components/link-info/server/index.php" url="{{value}}" doc-title="{{title}}" doc-images="{{images}}"></link-info>
       "{{title}}"
       <template is="dom-repeat" items="{{images}}">
-        <br> as iframe <iframe srcdoc="<base href={{value}}{{item.outerHTML}}" ></iframe>
-        <br> as div <div inner-h-t-m-l={{item.outerHTML}}></iframe>
+        {{item}}
       </template>
     </template>
   </body>
