@@ -11,11 +11,12 @@
     <template is="dom-bind">
       <paper-input label="link" value="{{value}}"></paper-input>
       <link-info server="http://dev.open-elements.org/bower_components/link-info/server/index.php" doc-favicon="{{fav}}" url="{{value}}" doc-title="{{title}}" doc-images="{{images}}"></link-info>
-      "{{title}}"
+      title "{{title}}"<br/>
       <template is="dom-repeat" items="{{images}}">
-        {{item}}
+        image: {{index}} {{item}}<br/>
       </template>
-      {{fav}}
+      fav: {{fav}}<br/>
+      
     </template>
   </body>
 </html>
