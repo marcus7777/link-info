@@ -4,17 +4,18 @@
     <title>link-info demo</title>
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="link-info.html">
-    <link rel="import" href="/bower_components/paper-input/paper-input.html">
+    <link rel="import" href="../paper-input/paper-input.html">
   </head>
   <body>
     <h3>link-info Demo</h3>
     <template is="dom-bind">
       <paper-input label="link" value="{{value}}"></paper-input>
-      <link-info server="http://dev.open-elements.org/bower_components/link-info/server/index.php" url="{{value}}" doc-title="{{title}}" doc-images="{{images}}"></link-info>
+      <link-info server="http://dev.open-elements.org/bower_components/link-info/server/index.php" doc-favicon="{{fav}}" url="{{value}}" doc-title="{{title}}" doc-images="{{images}}"></link-info>
       "{{title}}"
       <template is="dom-repeat" items="{{images}}">
         {{item}}
       </template>
+      {{fav}}
     </template>
   </body>
 </html>
